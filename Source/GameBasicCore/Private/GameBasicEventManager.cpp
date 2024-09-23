@@ -44,7 +44,7 @@ bool FGameBasicEventListenerCSharp::IsValid()
 	if (mOwner) {
 		return FMonoDomain::GCHandle_Get_Target_V2(mOwnerRef) != nullptr;
 	}
-	return false;
+	return true;
 }
 
 FGameBasicEventManager* FGameBasicEventManager::Get()

@@ -23,16 +23,16 @@ void FGameBasicCoreModule::StartupModule()
 		}
 	}
 	if (auto Settings = GetMutableDefault<UUnrealCSharpEditorSetting>()) {
-		TArray<FString>* SupportedModules = const_cast<TArray<FString>*>(&Settings->GetSupportedModule());
+		TArray<FString>* SupportedAssetPaths = const_cast<TArray<FString>*>(&Settings->GetSupportedAssetPath());
 		bool bNeedRegister = true;
-		for (auto& ModuleName : *SupportedModules) {
+		for (auto& ModuleName : *SupportedAssetPaths) {
 			if (ModuleName == "GameBasic") {
 				bNeedRegister = false;
 				break;
 			}
 		}
 		if (bNeedRegister) {
-			SupportedModules->Add(FString(TEXT("GameBasic")));
+			SupportedAssetPaths->Add(FString(TEXT("GameBasic")));
 			Settings->TryUpdateDefaultConfigFile();
 		}
 	}
